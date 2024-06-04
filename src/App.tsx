@@ -23,6 +23,10 @@ function App() {
     setIsRaining(true);
   };
 
+  const stopEmojiRain = () => {
+    setIsRaining(false);
+  }
+
   return (
     <>
       <div style={{ marginTop: '40px' }}>
@@ -30,7 +34,11 @@ function App() {
           date={completionDate}
           renderer={({ hours, minutes, seconds, completed }) => {
             if (completed) {
-              startEmojiRain();
+              if(Date.now() < completionDate.getTime() + 60000) {
+                startEmojiRain();
+              } else {
+                stopEmojiRain();
+              }
               return <HalpIsDead />;
             } else {
               const hourMarker = hours > 0 ? `${hours} hours, ` : '';
