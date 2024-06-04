@@ -14,10 +14,10 @@ function App() {
     return () => clearTimeout(timeout);
   }, [isRaining]);
 
-  const Halp = () => <img src="/logo.png" alt="halp" width={80} style={{ display: "inline", padding: "0 2px 0", marginBottom: "-6px" }} />;
+  const HalpLogo = () => <img src="/logo-cropped.png" alt="halp" width={80} style={{ display: "inline", padding: "0 2px 0", marginBottom: "-6px" }} />;
 
-  const HalpIsDead = () => <div>Yes, <Halp /> has died 😢</div>;
-  const HalpIsNotDead = () => <div>No, <Halp /> is not dead yet.</div>;
+  const HalpIsDead = () => <div>Yes, <HalpLogo /> <strong>Halp</strong> has died 😢</div>;
+  const HalpIsNotDead = () => <div>No, <HalpLogo /> <strong>Halp</strong> is not dead yet.</div>;
 
   const startEmojiRain = () => {
     setIsRaining(true);
