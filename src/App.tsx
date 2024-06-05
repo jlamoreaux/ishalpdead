@@ -14,9 +14,21 @@ function App() {
     return () => clearTimeout(timeout);
   }, [isRaining]);
 
+  const deadMessages = [
+    () => <span>Yes, <HalpLogo /> Halp is dead. 🪦</span>,
+    () => <span>Affirmative. <HalpLogo /> Halp is gone.</span>,
+    () => <span><HalpLogo /> Halp is no more. 🥀</span>,
+    () => <span>RIP <HalpLogo /> Halp. 😢</span>,
+    () => <span><HalpLogo /> Dead as a doornail. 🚪🔨</span>,
+    () => <span><HalpLogo/> Halp's dead, Jim</span>
+  ]
+
+  const getDeadMessage = () => {
+    return deadMessages[Math.floor(Math.random() * deadMessages.length)]();
+  }
+
   const HalpLogo = () => <img src="/logo-cropped.png" alt="halp" width={24} style={{ display: "inline", padding: "0", marginBottom: "-6px" }} />;
 
-  const HalpIsDead = () => <div>Yes, <HalpLogo /> <strong>Halp</strong> is, in fact, dead. 🪦</div>;
   const HalpIsNotDead = () => <div>Well it's complicated apparently.<br /><HalpLogo /> <strong>Halp</strong> should be dead but it's not yet.</div>;
 
   const startEmojiRain = () => {
@@ -39,7 +51,7 @@ function App() {
               } else {
                 stopEmojiRain();
               }
-              return <HalpIsDead />;
+              return getDeadMessage();
             } else {
               const dayMarker = days > 0 ? `${days} days, ` : '';
               const hourMarker = hours > 0 ? `${hours} hours, ` : '';
