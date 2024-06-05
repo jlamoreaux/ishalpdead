@@ -3,7 +3,7 @@ import Countdown from 'react-countdown';
 import './App.css';
 
 function App() {
-  const completionDate = new Date('June 11, 2024 17:00:00 GMT-0700');
+  const completionDate = new Date('June 04, 2024 17:00:00 GMT-0700');
   const [isRaining, setIsRaining] = useState(false);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ function App() {
 
   const HalpLogo = () => <img src="/logo-cropped.png" alt="halp" width={24} style={{ display: "inline", padding: "0", marginBottom: "-6px" }} />;
 
-  const HalpIsDead = () => <div>Yes, <HalpLogo /> <strong>Halp</strong> has died 😢</div>;
+  const HalpIsDead = () => <div>Yes, <HalpLogo /> <strong>Halp</strong> is, in fact, dead. 🪦</div>;
   const HalpIsNotDead = () => <div>Well it's complicated apparently.<br /><HalpLogo /> <strong>Halp</strong> should be dead but it's not yet.</div>;
 
   const startEmojiRain = () => {
