@@ -3,7 +3,7 @@ import Countdown from 'react-countdown';
 import './App.css';
 
 function App() {
-  const completionDate = new Date('June 4, 2024 17:00:00 GMT-0700');
+  const completionDate = new Date('June 11, 2024 17:00:00 GMT-0700');
   const [isRaining, setIsRaining] = useState(false);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ function App() {
   const HalpLogo = () => <img src="/logo-cropped.png" alt="halp" width={24} style={{ display: "inline", padding: "0", marginBottom: "-6px" }} />;
 
   const HalpIsDead = () => <div>Yes, <HalpLogo /> <strong>Halp</strong> has died 😢</div>;
-  const HalpIsNotDead = () => <div>No, <HalpLogo /> <strong>Halp</strong> is not dead yet.</div>;
+  const HalpIsNotDead = () => <div>Well it's complicated apparently.<br /><HalpLogo /> <strong>Halp</strong> should be dead but it's not yet.</div>;
 
   const startEmojiRain = () => {
     setIsRaining(true);
@@ -32,7 +32,7 @@ function App() {
       <div style={{ marginTop: '40px' }}>
         <Countdown
           date={completionDate}
-          renderer={({ hours, minutes, seconds, completed }) => {
+          renderer={({days, hours, minutes, seconds, completed }) => {
             if (completed) {
               if(Date.now() < completionDate.getTime() + 60000) {
                 startEmojiRain();
@@ -41,6 +41,7 @@ function App() {
               }
               return <HalpIsDead />;
             } else {
+              const dayMarker = days > 0 ? `${days} days, ` : '';
               const hourMarker = hours > 0 ? `${hours} hours, ` : '';
               const minuteMarker = minutes > 0 ? `${minutes} minutes, ` : '';
               const secondMarker = `${seconds} seconds`;
@@ -48,7 +49,7 @@ function App() {
                 <>
                   <HalpIsNotDead />
                   <br />
-                  <div>{hourMarker} {minuteMarker} {secondMarker} until Halp is dead 💀</div>
+                  <div>{dayMarker} {hourMarker} {minuteMarker} {secondMarker} until Halp is dead 💀</div>
                 </>
               );
             }
